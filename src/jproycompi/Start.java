@@ -9,17 +9,18 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import java.io.File;
+import javax.swing.JFileChooser;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
-import org.jfugue.midi.MidiFileManager;
 
 /**
  *
  * @author jorge
  */
 public class Start extends javax.swing.JFrame {
-
+    
     audio au = new audio();
+    String cadena;
 
     /**
      * Creates new form Start
@@ -29,6 +30,7 @@ public class Start extends javax.swing.JFrame {
         this.setTitle("Compilador");
         this.setLocationRelativeTo(null);
         lblWarning.setVisible(false);
+        lblsave.setVisible(false);
         cargarimagen();
     }
 
@@ -47,9 +49,10 @@ public class Start extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnReproducir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        CBTipo = new javax.swing.JComboBox<>();
+        btnSave = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        lblsave = new javax.swing.JLabel();
         lblWarning = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -71,34 +74,48 @@ public class Start extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Guardar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 0))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "txt", "midi", "mid" }));
+        CBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "txt", "midi", "mid" }));
 
-        jButton2.setText("Guardar");
+        btnSave.setText("Guardar");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Formato");
+
+        lblsave.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        lblsave.setForeground(new java.awt.Color(0, 0, 255));
+        lblsave.setText("Archivo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CBTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(lblsave)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(CBTipo)
+                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(jLabel2))
-                .addGap(23, 23, 23))
+                .addGap(5, 5, 5)
+                .addComponent(lblsave))
         );
 
         lblWarning.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
@@ -165,28 +182,55 @@ public class Start extends javax.swing.JFrame {
 
     private void btnReproducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReproducirActionPerformed
         // TODO add your handling code here:
-        //System.out.println("" + txtNotas.getText());
 
-        String[] p = txtNotas.getText().split(" |\\n");
-        String cadena = "";
-        boolean sen = true;
-        for (int i = 0; i < p.length; i++) {
-            if ("-".equals(au.Conversion(p[i]))) {
-                sen = false;
-                break;
+        if (validar()) {
+            if (lblWarning.isVisible()) {
+                lblWarning.setVisible(false);
             }
-            cadena = cadena + " " + au.Conversion(p[i]);
-        }
-        if (sen) {
             System.out.println("*********************************");
             System.out.println("" + cadena);
             Reproducir(cadena);
-            if(lblWarning.isVisible()) lblWarning.setVisible(false);
-        }
-        else{
+            
+        } else {
             lblWarning.setVisible(true);
         }
     }//GEN-LAST:event_btnReproducirActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        if (validar()) {
+            if (lblWarning.isVisible()) {
+                lblWarning.setVisible(false);
+            }
+            String formato = (String) CBTipo.getSelectedItem(), ruta = "";
+            
+            File saveFile = new File("notas." + formato);
+            JFileChooser chooser = new JFileChooser();
+            chooser.setSelectedFile(saveFile);
+            int rFormato = chooser.showSaveDialog(this);
+            if (rFormato == JFileChooser.APPROVE_OPTION) {
+                ruta = chooser.getSelectedFile() + "";
+                
+                switch (formato) {
+                    case "txt":
+                        au.guardar(1, ruta, cadena, txtNotas.getText());
+                        break;
+                    case "mid":
+                        au.guardar(2, ruta, cadena, txtNotas.getText());
+                        break;
+                    case "midi":
+                        au.guardar(3, ruta, cadena, txtNotas.getText());
+                        break;
+                }
+                lblsave.setText("Archivo " + formato + " guardado con exito !!!");
+                lblsave.setVisible(true);
+            }
+        } else {
+            lblWarning.setVisible(true);
+        }
+        
+
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,9 +268,9 @@ public class Start extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBTipo;
     private javax.swing.JButton btnReproducir;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
@@ -235,21 +279,36 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWarning;
+    private javax.swing.JLabel lblsave;
     private javax.swing.JTextArea txtNotas;
     // End of variables declaration//GEN-END:variables
 
     private void cargarimagen() {
-
+        
         ImageIcon icon = new ImageIcon(System.getProperty("user.dir") + "\\Imagenes\\imagen.png");
         icon = new ImageIcon(icon.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
         jLabel1.setIcon(icon);
-
+        
     }
-
+    
     private void Reproducir(String notas) {
         Player player = new Player();
-        Pattern pattern = new Pattern(notas);                    
+        Pattern pattern = new Pattern(notas);
         player.play(pattern);
     }
-
+    
+    private boolean validar() {
+        String[] p = txtNotas.getText().split(" |\\n");
+        cadena = "";
+        boolean sen = true;
+        for (int i = 0; i < p.length; i++) {
+            if ("-".equals(au.Conversion(p[i]))) {
+                sen = false;
+                break;
+            }
+            cadena = cadena + " " + au.Conversion(p[i]);
+        }
+        return sen;
+    }
+    
 }

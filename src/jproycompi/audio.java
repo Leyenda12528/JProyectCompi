@@ -5,8 +5,12 @@
  */
 package jproycompi;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jfugue.midi.MidiFileManager;
 
 /**
  *
@@ -33,4 +37,28 @@ public class audio {
         }
         return valorR;
     }
+
+    void guardar(int valor, String ruta, String cadena, String special) {
+        try {
+            org.jfugue.pattern.Pattern pater = new org.jfugue.pattern.Pattern(cadena);
+            switch (valor) {
+                case 1://txt
+                    String content = special;
+                    String path = ruta;
+                    Files.write(Paths.get(path), content.getBytes());
+                    break;
+                case 2://midi                   
+                    MidiFileManager.savePatternToMidi(pater, new File(ruta));
+                    break;
+                case 3://mid
+                    MidiFileManager.savePatternToMidi(pater, new File(ruta));
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        } catch (Exception e) {
+            System.out.println(""+e);
+        }
+    }
+
 }
