@@ -32,9 +32,11 @@ public class JProyCompi {
             player.play(pattern);
             //player.
             //player.saveMidi(pattern, new File("MySong.midi"));
-            MidiFileManager.savePatternToMidi(pattern, new File("C:\\Users\\jorge\\Desktop\\JFugue41-1.midi"));
+            //player.saveMidi(pattern, new File("MySong.mid"));
+            MidiFileManager.savePatternToMidi(pattern, new File("C:\\Users\\jorge\\Desktop\\JFugue41-1.mid"));
             // handle IO Exception
         } catch (Exception e) {
+            System.out.println(""+e);
         }
     }
 
