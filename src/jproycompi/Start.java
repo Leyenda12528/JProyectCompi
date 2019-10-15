@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JTextArea;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 
@@ -18,7 +19,7 @@ import org.jfugue.player.Player;
  * @author jorge
  */
 public class Start extends javax.swing.JFrame {
-    
+
     audio au = new audio();
     String cadena;
 
@@ -33,6 +34,7 @@ public class Start extends javax.swing.JFrame {
         lblsave.setVisible(false);
         cargarimagen();
         txtCoro.setLineWrap(true);
+        txtMelodia.setLineWrap(true);
     }
 
     /**
@@ -54,7 +56,7 @@ public class Start extends javax.swing.JFrame {
         txtCoro = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtNota = new javax.swing.JTextArea();
+        txtMelodia = new javax.swing.JTextArea();
         btnPlayMelodia = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -128,10 +130,10 @@ public class Start extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Melodia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("MingLiU-ExtB", 1, 15))); // NOI18N
 
-        txtNota.setColumns(20);
-        txtNota.setFont(new java.awt.Font("Monospaced", 1, 16)); // NOI18N
-        txtNota.setRows(5);
-        jScrollPane2.setViewportView(txtNota);
+        txtMelodia.setColumns(20);
+        txtMelodia.setFont(new java.awt.Font("Monospaced", 1, 16)); // NOI18N
+        txtMelodia.setRows(5);
+        jScrollPane2.setViewportView(txtMelodia);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -152,6 +154,11 @@ public class Start extends javax.swing.JFrame {
 
         btnPlayMelodia.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         btnPlayMelodia.setText("Reproducir Melodia");
+        btnPlayMelodia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayMelodiaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -301,14 +308,14 @@ public class Start extends javax.swing.JFrame {
     private void btnPlayCoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayCoroActionPerformed
         // TODO add your handling code here:
 
-        if (validar()) {
+        if (validar(txtCoro)) {
             if (lblWarning.isVisible()) {
                 lblWarning.setVisible(false);
             }
             System.out.println("*********************************");
             System.out.println("" + cadena);
             Reproducir(cadena);
-            
+
         } else {
             lblWarning.setVisible(true);
         }
@@ -316,19 +323,19 @@ public class Start extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if (validar()) {
+        if (validar(txtCoro)) {
             if (lblWarning.isVisible()) {
                 lblWarning.setVisible(false);
             }
             String formato = (String) CBTipo.getSelectedItem(), ruta = "";
-            
+
             File saveFile = new File("notas." + formato);
             JFileChooser chooser = new JFileChooser();
             chooser.setSelectedFile(saveFile);
             int rFormato = chooser.showSaveDialog(this);
             if (rFormato == JFileChooser.APPROVE_OPTION) {
                 ruta = chooser.getSelectedFile() + "";
-                
+
                 switch (formato) {
                     case "txt":
                         au.guardar(1, ruta, cadena, txtCoro.getText());
@@ -346,9 +353,16 @@ public class Start extends javax.swing.JFrame {
         } else {
             lblWarning.setVisible(true);
         }
-        
+
 
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnPlayMelodiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayMelodiaActionPerformed
+        // TODO add your handling code here:
+        if (validar1(txtMelodia)) {
+
+        }
+    }//GEN-LAST:event_btnPlayMelodiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,35 +420,65 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JLabel lblWarning;
     private javax.swing.JLabel lblsave;
     private javax.swing.JTextArea txtCoro;
-    private javax.swing.JTextArea txtNota;
+    private javax.swing.JTextArea txtMelodia;
     // End of variables declaration//GEN-END:variables
 
     private void cargarimagen() {
-        
+
         ImageIcon icon = new ImageIcon(System.getProperty("user.dir") + "\\Imagenes\\imagen.png");
         icon = new ImageIcon(icon.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
         jLabel1.setIcon(icon);
-        
+
     }
-    
+
     private void Reproducir(String notas) {
         Player player = new Player();
         Pattern pattern = new Pattern(notas);
         player.play(pattern);
     }
-    
-    private boolean validar() {
-        String[] p = txtCoro.getText().split(" |\\n");
+
+    private boolean validar(JTextArea txtNota) {
+        String[] p = txtNota.getText().split(" |\\n");
         cadena = "";
         boolean sen = true;
         for (int i = 0; i < p.length; i++) {
-            if ("-".equals(au.Conversion(p[i]))) {
+            if ("-".equals(au.ConversionNotas(p[i]))) {
                 sen = false;
                 break;
             }
-            cadena = cadena + " " + au.Conversion(p[i]);
+            cadena = cadena + " " + au.ConversionNotas(p[i]);
         }
         return sen;
     }
-    
+
+    private boolean validar1(JTextArea txtNota) {
+
+        String tipo, notas, fin;
+        String texto = txtNota.getText().replace("\\n", "");
+        System.out.println("--------------------------------");
+        System.out.println("texto ori: "+txtNota.getText());
+        System.out.println("texto cambi: "+texto);
+        System.out.println("--------------------------------");
+        
+        
+        String[] p = texto.split(":|;");
+        System.out.println("*****************************");
+        for (int i = 0; i < p.length; i++) {
+            System.out.println(i + " - ª" + p[i] + "ª -> " + au.ConversionWords(p[i]));
+        }
+        /*
+        String[] p = txtNota.getText().split(" |\\n");
+        cadena = "";
+        boolean sen = true;
+        for (int i = 0; i < p.length; i++) {
+            if ("-".equals(au.ConversionNotas(p[i]))) {
+                sen = false;
+                break;
+            }
+            cadena = cadena + " " + au.ConversionNotas(p[i]);
+        }*/
+        boolean sen = true;
+        return sen;
+    }
+
 }
