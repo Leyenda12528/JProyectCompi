@@ -30,9 +30,12 @@ public class Start extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Compilador");
         this.setLocationRelativeTo(null);
-        lblWarning.setVisible(false);
+
+        lblCoro.setVisible(false);
         lblsave.setVisible(false);
+        lblMelodia.setVisible(false);
         cargarimagen();
+
         txtCoro.setLineWrap(true);
         txtMelodia.setLineWrap(true);
     }
@@ -48,9 +51,9 @@ public class Start extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnPlayCoro = new javax.swing.JButton();
-        lblWarning = new javax.swing.JLabel();
+        lblCoro = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtCoro = new javax.swing.JTextArea();
@@ -58,6 +61,7 @@ public class Start extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtMelodia = new javax.swing.JTextArea();
         btnPlayMelodia = new javax.swing.JButton();
+        lblMelodia = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -65,6 +69,7 @@ public class Start extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lblsave = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -78,14 +83,14 @@ public class Start extends javax.swing.JFrame {
             }
         });
 
-        lblWarning.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        lblWarning.setForeground(new java.awt.Color(255, 0, 0));
-        lblWarning.setText("Advertencia: Hay un espacio de demás");
+        lblCoro.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        lblCoro.setForeground(new java.awt.Color(255, 0, 0));
+        lblCoro.setText("Advertencia: Hay un espacio de demás");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Titulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("MingLiU-ExtB", 1, 14))); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jTextField1.setText("jTextField1");
+        txtTitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtTitulo.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -93,14 +98,14 @@ public class Start extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -160,6 +165,10 @@ public class Start extends javax.swing.JFrame {
             }
         });
 
+        lblMelodia.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        lblMelodia.setForeground(new java.awt.Color(255, 0, 0));
+        lblMelodia.setText("Error");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -173,7 +182,7 @@ public class Start extends javax.swing.JFrame {
                                 .addGap(2, 2, 2)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblWarning))
+                            .addComponent(lblCoro))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -183,7 +192,9 @@ public class Start extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnPlayMelodia, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMelodia)
+                    .addComponent(btnPlayMelodia, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
@@ -199,9 +210,11 @@ public class Start extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnPlayCoro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(lblWarning)))
+                        .addComponent(lblCoro)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMelodia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPlayMelodia, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addComponent(btnPlayMelodia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -260,15 +273,27 @@ public class Start extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton1)))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -276,6 +301,8 @@ public class Start extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
@@ -298,8 +325,8 @@ public class Start extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -309,23 +336,23 @@ public class Start extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (validar(txtCoro)) {
-            if (lblWarning.isVisible()) {
-                lblWarning.setVisible(false);
+            if (lblCoro.isVisible()) {
+                lblCoro.setVisible(false);
             }
             System.out.println("*********************************");
             System.out.println("" + cadena);
             Reproducir(cadena);
 
         } else {
-            lblWarning.setVisible(true);
+            lblCoro.setVisible(true);
         }
     }//GEN-LAST:event_btnPlayCoroActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         if (validar(txtCoro)) {
-            if (lblWarning.isVisible()) {
-                lblWarning.setVisible(false);
+            if (lblCoro.isVisible()) {
+                lblCoro.setVisible(false);
             }
             String formato = (String) CBTipo.getSelectedItem(), ruta = "";
 
@@ -351,18 +378,39 @@ public class Start extends javax.swing.JFrame {
                 lblsave.setVisible(true);
             }
         } else {
-            lblWarning.setVisible(true);
+            lblCoro.setVisible(true);
         }
 
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnPlayMelodiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayMelodiaActionPerformed
-        // TODO add your handling code here:
-        if (validar1(txtMelodia)) {
 
+        //validar si estan escritos bien los instrumentos
+        if (validarInstruments(txtMelodia)) {
+            lblMelodia.setVisible(false);
+            //validar si esta escrito bien las notas que tocaran los instrumentos
+            if (validarNotasInd(txtMelodia)) {
+
+            }
+        } else {
+            lblMelodia.setText("Error: instrumentos o coro mal escritos");
+            lblMelodia.setVisible(true);
         }
     }//GEN-LAST:event_btnPlayMelodiaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//        // TODO add your handling code here:
+//        //au.pruebaÇ();
+//        //Reproducir("I[Overdriven_Guitar] G4q Bb4q C5q C G G G F F F F C C C");
+//        //Reproducir("I[Violin] G4q Bb4q C5q C G G G F F F F C C C");
+//        //Reproducir("I[Flute] G4q Bb4q C5q C G G G F F F F C C C");
+//        
+//        Reproducir("I[Electric_Jazz_Guitar] G4q Bb4q C5q C G G G F F F F C C C");
+//        Reproducir("I[Guitar] G4q Bb4q C5q C G G G F F F F C C C");
+//        Reproducir("I[Harmonica] G4q Bb4q C5q C G G G F F F F C C C");
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,6 +452,7 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JButton btnPlayCoro;
     private javax.swing.JButton btnPlayMelodia;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
@@ -416,11 +465,12 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblWarning;
+    private javax.swing.JLabel lblCoro;
+    private javax.swing.JLabel lblMelodia;
     private javax.swing.JLabel lblsave;
     private javax.swing.JTextArea txtCoro;
     private javax.swing.JTextArea txtMelodia;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 
     private void cargarimagen() {
@@ -437,6 +487,7 @@ public class Start extends javax.swing.JFrame {
         player.play(pattern);
     }
 
+    //funcion para validar las notas CORO do re mi fa
     private boolean validar(JTextArea txtNota) {
         String[] p = txtNota.getText().split(" |\\n");
         cadena = "";
@@ -451,33 +502,46 @@ public class Start extends javax.swing.JFrame {
         return sen;
     }
 
-    private boolean validar1(JTextArea txtNota) {
-
+    //funcion para validar los instrumentos/coro que se van a usar en la melodia
+    private boolean validarInstruments(JTextArea txtNota) {
         String tipo, notas, fin;
+        boolean sen = true;
         String texto = txtNota.getText().replace("\\n", "");
-        System.out.println("--------------------------------");
-        System.out.println("texto ori: "+txtNota.getText());
-        System.out.println("texto cambi: "+texto);
-        System.out.println("--------------------------------");
-        
-        
+        System.out.println("---------------------------------------");
+        /*System.out.println("texto ori: " + txtNota.getText());
+        System.out.println("texto cambi: " + texto);*/
+        System.out.println("---------------------------------------");
+
         String[] p = texto.split(":|;");
-        System.out.println("*****************************");
         for (int i = 0; i < p.length; i++) {
-            System.out.println(i + " - ª" + p[i] + "ª -> " + au.ConversionWords(p[i]));
-        }
-        /*
-        String[] p = txtNota.getText().split(" |\\n");
-        cadena = "";
-        boolean sen = true;
-        for (int i = 0; i < p.length; i++) {
-            if ("-".equals(au.ConversionNotas(p[i]))) {
-                sen = false;
-                break;
+            if (i % 2 == 0) {
+                System.out.println(i + " - ª" + p[i] + "ª -> " + au.ConversionWords(p[i] + ":"));
+                if ("-".equals(au.ConversionWords(p[i] + ":"))) {
+                    sen = false;
+                    break;
+                }
             }
-            cadena = cadena + " " + au.ConversionNotas(p[i]);
-        }*/
+        }
+        return sen;
+    }
+    //validar notas de cada instrumento
+    private boolean validarNotasInd(JTextArea txtNota) {
+        String tipo, notas, fin;
         boolean sen = true;
+        String texto = txtNota.getText().replace("\\n", "");
+        System.out.println("******************************************");
+        //C D E F G A B C C C
+        String[] p = texto.split(":|;");
+        for (int i = 0; i < p.length; i++) {
+            if (i % 2 != 0 && !p[i - 1].equals(" coro") && !p[i - 1].equals("\ncoro")) {
+                System.out.println(i + " -> " + p[i]);
+                //System.out.println(i + " - ª" + p[i] + "ª -> " + au.ConversionNotas(p[i]));
+                /*if ("-".equals(au.ConversionNotas(p[i]))) {
+                    sen = false;
+                    break;
+                }*/
+            }
+        }
         return sen;
     }
 
