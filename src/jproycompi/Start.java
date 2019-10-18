@@ -21,7 +21,7 @@ import org.jfugue.player.Player;
 public class Start extends javax.swing.JFrame {
 
     audio au = new audio();
-    String cadena;
+    String cadena, melodia = "", CoroM = "G4q Bb4q C5q ", coro = "";
 
     /**
      * Creates new form Start
@@ -62,6 +62,9 @@ public class Start extends javax.swing.JFrame {
         txtMelodia = new javax.swing.JTextArea();
         btnPlayMelodia = new javax.swing.JButton();
         lblMelodia = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -69,7 +72,6 @@ public class Start extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lblsave = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -90,7 +92,6 @@ public class Start extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Titulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("MingLiU-ExtB", 1, 14))); // NOI18N
 
         txtTitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtTitulo.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -169,6 +170,15 @@ public class Start extends javax.swing.JFrame {
         lblMelodia.setForeground(new java.awt.Color(255, 0, 0));
         lblMelodia.setText("Error");
 
+        jLabel3.setFont(new java.awt.Font("MingLiU-ExtB", 1, 14)); // NOI18N
+        jLabel3.setText("Instrumentos: \n");
+
+        jLabel4.setFont(new java.awt.Font("MingLiU-ExtB", 1, 14)); // NOI18N
+        jLabel4.setText("-guitarra  -violin -piano");
+
+        jLabel5.setFont(new java.awt.Font("MingLiU-ExtB", 1, 14)); // NOI18N
+        jLabel5.setText("-flauta -armonica -guitarra_electrica");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -176,46 +186,62 @@ public class Start extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCoro))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnPlayCoro, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)))
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnPlayCoro, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCoro)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMelodia)
-                    .addComponent(btnPlayMelodia, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPlayMelodia, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMelodia))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblMelodia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPlayMelodia, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPlayCoro, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(lblCoro)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblMelodia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPlayMelodia, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPlayCoro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblCoro)
+                        .addGap(61, 61, 61))))
         );
 
         jPanel3.setBackground(new java.awt.Color(51, 0, 0));
@@ -225,7 +251,7 @@ public class Start extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Guardar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 0, 0))); // NOI18N
 
         CBTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        CBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "txt", "midi", "mid" }));
+        CBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nots", "midi", "mid" }));
 
         btnSave.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnSave.setText("Guardar");
@@ -248,12 +274,12 @@ public class Start extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnSave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblsave)
-                        .addGap(124, 124, 124))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblsave))
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(CBTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -273,27 +299,15 @@ public class Start extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jButton1)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -301,8 +315,6 @@ public class Start extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
@@ -319,9 +331,8 @@ public class Start extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,84 +344,93 @@ public class Start extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPlayCoroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayCoroActionPerformed
-        // TODO add your handling code here:
-
-        if (validar(txtCoro)) {
-            if (lblCoro.isVisible()) {
+        // validar CORO
+        if (validarInstrumentsCoro(txtCoro)) {
+            lblCoro.setVisible(false);
+            //validar si esta escrito bien las notas que tocaran los instrumentos
+            if (validarNotasCoro(txtCoro)) {
                 lblCoro.setVisible(false);
-            }
-            System.out.println("*********************************");
-            System.out.println("" + cadena);
-            Reproducir(cadena);
+                getCoro(txtCoro);
+                System.out.println("*********************************");
+                Reproducir(coro);
 
+            } else {
+                lblCoro.setText("Error: notas mal escritas");
+                lblCoro.setVisible(true);
+            }
         } else {
+            lblCoro.setText("Error: instrumentos mal escritos");
             lblCoro.setVisible(true);
         }
     }//GEN-LAST:event_btnPlayCoroActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if (validar(txtCoro)) {
-            if (lblCoro.isVisible()) {
-                lblCoro.setVisible(false);
-            }
-            String formato = (String) CBTipo.getSelectedItem(), ruta = "";
+        if (validarInstrumentsCoro(txtCoro) && validarNotasCoro(txtCoro) && validarInstruments(txtMelodia) && validarNotasInd(txtMelodia)) {
+            lblsave.setVisible(false);
+            if (txtTitulo.getText().length() > 0) {
+                lblsave.setVisible(false);
+                getCoro(txtCoro);
+                getMelodia(txtMelodia);
+                
+                String formato = (String) CBTipo.getSelectedItem(), ruta = "";
+                File saveFile = new File(txtTitulo.getText().trim()+"." + formato);
+                JFileChooser chooser = new JFileChooser();
+                chooser.setSelectedFile(saveFile);
+                int rFormato = chooser.showSaveDialog(this);
+                if (rFormato == JFileChooser.APPROVE_OPTION) {
+                    ruta = chooser.getSelectedFile() + "";
 
-            File saveFile = new File("notas." + formato);
-            JFileChooser chooser = new JFileChooser();
-            chooser.setSelectedFile(saveFile);
-            int rFormato = chooser.showSaveDialog(this);
-            if (rFormato == JFileChooser.APPROVE_OPTION) {
-                ruta = chooser.getSelectedFile() + "";
-
-                switch (formato) {
-                    case "txt":
-                        au.guardar(1, ruta, cadena, txtCoro.getText());
-                        break;
-                    case "mid":
-                        au.guardar(2, ruta, cadena, txtCoro.getText());
-                        break;
-                    case "midi":
-                        au.guardar(3, ruta, cadena, txtCoro.getText());
-                        break;
+                    switch (formato) {
+                        case "nots":
+                            au.guardar(1, ruta, melodia, txtCoro.getText());
+                            break;
+                        case "mid":
+                            au.guardar(2, ruta, melodia, txtCoro.getText());
+                            break;
+                        case "midi":
+                            au.guardar(3, ruta, melodia, txtCoro.getText());
+                            break;
+                    }
+                    lblsave.setText("Archivo " + formato + " guardado!!!");
+                    lblsave.setVisible(true);
                 }
-                lblsave.setText("Archivo " + formato + " guardado con exito !!!");
+            } else {
+                lblsave.setText("Ingrese un titulo !!!");
                 lblsave.setVisible(true);
             }
         } else {
-            lblCoro.setVisible(true);
+            lblsave.setText("Verifique la Melodia !!!");
+            lblsave.setVisible(true);
         }
-
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnPlayMelodiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayMelodiaActionPerformed
 
-        //validar si estan escritos bien los instrumentos
-        if (validarInstruments(txtMelodia)) {
+        //validar si estan escritos bien los instrumentos        
+        if (validarInstrumentsCoro(txtCoro) && validarNotasCoro(txtCoro)) {
             lblMelodia.setVisible(false);
-            //validar si esta escrito bien las notas que tocaran los instrumentos
-            if (validarNotasInd(txtMelodia)) {
-
+            if (validarInstruments(txtMelodia)) {
+                lblMelodia.setVisible(false);
+                //validar si esta escrito bien las notas que tocaran los instrumentos
+                if (validarNotasInd(txtMelodia)) {
+                    lblMelodia.setVisible(false);
+                    getMelodia(txtMelodia);
+                    Reproducir(melodia);
+                } else {
+                    lblMelodia.setText("Error: notas mal escritas");
+                    lblMelodia.setVisible(true);
+                }
+            } else {
+                lblMelodia.setText("Error: instrumentos o coro mal escritos");
+                lblMelodia.setVisible(true);
             }
         } else {
-            lblMelodia.setText("Error: instrumentos o coro mal escritos");
+            lblMelodia.setText("Error: verificar coro");
             lblMelodia.setVisible(true);
         }
     }//GEN-LAST:event_btnPlayMelodiaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        // TODO add your handling code here:
-//        //au.pruebaÇ();
-//        //Reproducir("I[Overdriven_Guitar] G4q Bb4q C5q C G G G F F F F C C C");
-//        //Reproducir("I[Violin] G4q Bb4q C5q C G G G F F F F C C C");
-//        //Reproducir("I[Flute] G4q Bb4q C5q C G G G F F F F C C C");
-//        
-//        Reproducir("I[Electric_Jazz_Guitar] G4q Bb4q C5q C G G G F F F F C C C");
-//        Reproducir("I[Guitar] G4q Bb4q C5q C G G G F F F F C C C");
-//        Reproducir("I[Harmonica] G4q Bb4q C5q C G G G F F F F C C C");
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,9 +472,11 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JButton btnPlayCoro;
     private javax.swing.JButton btnPlayMelodia;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -487,46 +509,35 @@ public class Start extends javax.swing.JFrame {
         player.play(pattern);
     }
 
-    //funcion para validar las notas CORO do re mi fa
-    private boolean validar(JTextArea txtNota) {
-        String[] p = txtNota.getText().split(" |\\n");
-        cadena = "";
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////            VALIDAR CORO
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private boolean validarInstrumentsCoro(JTextArea txtNota) {
         boolean sen = true;
-        for (int i = 0; i < p.length; i++) {
-            if ("-".equals(au.ConversionNotas(p[i]))) {
-                sen = false;
-                break;
-            }
-            cadena = cadena + " " + au.ConversionNotas(p[i]);
-        }
-        return sen;
-    }
+        if (txtNota.getText().length() > 0) {
+            String texto = txtNota.getText().replace("\\n", "");
+            System.out.println("---------------------------------------");
+            System.out.println("---------------------------------------");
 
-    //funcion para validar los instrumentos/coro que se van a usar en la melodia
-    private boolean validarInstruments(JTextArea txtNota) {
-        String tipo, notas, fin;
-        boolean sen = true;
-        String texto = txtNota.getText().replace("\\n", "");
-        System.out.println("---------------------------------------");
-        /*System.out.println("texto ori: " + txtNota.getText());
-        System.out.println("texto cambi: " + texto);*/
-        System.out.println("---------------------------------------");
-
-        String[] p = texto.split(":|;");
-        for (int i = 0; i < p.length; i++) {
-            if (i % 2 == 0) {
-                System.out.println(i + " - ª" + p[i] + "ª -> " + au.ConversionWords(p[i] + ":"));
-                if ("-".equals(au.ConversionWords(p[i] + ":"))) {
-                    sen = false;
-                    break;
+            String[] p = texto.split(":|;");
+            for (int i = 0; i < p.length; i++) {
+                if (i % 2 == 0) {
+                    if ("-".equals(au.ConversionWords(p[i] + ":")) || "coro".equals(au.ConversionWords(p[i] + ":"))) {
+                        System.out.println("ERROR Coro");
+                        sen = false;
+                        break;
+                    }
                 }
             }
+        } else {
+            sen = false;
         }
         return sen;
     }
+
     //validar notas de cada instrumento
-    private boolean validarNotasInd(JTextArea txtNota) {
-        String tipo, notas, fin;
+    private boolean validarNotasCoro(JTextArea txtNota) {
+        String[] notas;
         boolean sen = true;
         String texto = txtNota.getText().replace("\\n", "");
         System.out.println("******************************************");
@@ -534,15 +545,132 @@ public class Start extends javax.swing.JFrame {
         String[] p = texto.split(":|;");
         for (int i = 0; i < p.length; i++) {
             if (i % 2 != 0 && !p[i - 1].equals(" coro") && !p[i - 1].equals("\ncoro")) {
-                System.out.println(i + " -> " + p[i]);
-                //System.out.println(i + " - ª" + p[i] + "ª -> " + au.ConversionNotas(p[i]));
-                /*if ("-".equals(au.ConversionNotas(p[i]))) {
-                    sen = false;
+                //validando notas mientras no sea el o instrumento
+                notas = p[i].split(" ");
+                for (int j = 1; j < notas.length; j++) {
+                    if ("-".equals(au.ConversionNotas(notas[j] + " "))) {
+                        System.out.println("ERROR Notas");
+                        sen = false;
+                        break;
+                    }
+                }
+                if (!sen) {
                     break;
-                }*/
+                }
             }
         }
         return sen;
+    }
+
+    /// Escribir la nota musical a producir
+    private void getCoro(JTextArea txtNota) {
+        coro = "";
+        String[] notas;
+        String texto = txtNota.getText().replace("\\n", "");
+        System.out.println("******************************************");
+        //C D E F G A B C C C
+        String[] p = texto.split(":|;");
+        for (int i = 0; i < p.length; i++) {
+            if (i % 2 != 0 && !p[i - 1].equals(" coro") && !p[i - 1].equals("\ncoro")) {
+                //las notas
+                System.out.println(i + " NOTAS-> " + p[i]);
+                notas = p[i].split(" ");
+                for (int j = 1; j < notas.length; j++) {
+                    coro += au.ConversionNotas(notas[j] + " ") + " ";
+                }
+                //melodia = au.ConversionWords(p[i] + ":");
+            } else if (i % 2 == 0) {
+                //los instrumentos y CoroM
+                coro += au.ConversionWords(p[i] + ":").equals("coro") ? "" : au.ConversionWords(p[i] + ":") + " ";
+                System.out.println(i + " Tools -> " + p[i]);
+            }
+        }
+        System.out.println("--------------------->CORO------\n" + coro);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////            VALIDAR MELODIA
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //funcion para validar los instrumentos/coro que se van a usar en la melodia
+    private boolean validarInstruments(JTextArea txtNota) {
+        boolean sen = true;
+        if (txtNota.getText().length() > 0) {
+            String texto = txtNota.getText().replace("\\n", "");
+            System.out.println("---------------------------------------");
+            /*System.out.println("texto ori: " + txtNota.getText());
+        System.out.println("texto cambi: " + texto);*/
+            System.out.println("---------------------------------------");
+
+            String[] p = texto.split(":|;");
+            for (int i = 0; i < p.length; i++) {
+                if (i % 2 == 0) {
+                    System.out.println(i + " - ª" + p[i] + "ª -> " + au.ConversionWords(p[i] + ":"));
+                    if ("-".equals(au.ConversionWords(p[i] + ":"))) {
+                        System.out.println("ERROR Instrumento");
+                        sen = false;
+                        break;
+                    }
+                }
+            }
+        } else {
+            sen = false;
+        }
+        return sen;
+    }
+
+    //validar notas de cada instrumento
+    private boolean validarNotasInd(JTextArea txtNota) {
+        String[] notas;
+        boolean sen = true;
+        String texto = txtNota.getText().replace("\\n", "");
+        System.out.println("******************************************");
+        //C D E F G A B C C C
+        String[] p = texto.split(":|;");
+        for (int i = 0; i < p.length; i++) {
+            if (i % 2 != 0 && !p[i - 1].equals(" coro") && !p[i - 1].equals("\ncoro")) {
+                //validando notas mientras no sea el CoroM o instrumento
+                System.out.println(i + " NOTAS-> " + p[i]);
+                notas = p[i].split(" ");
+                for (int j = 1; j < notas.length; j++) {
+                    if ("-".equals(au.ConversionNotas(notas[j] + " "))) {
+                        System.out.println("ERROR Notas");
+                        sen = false;
+                        break;
+                    }
+                    //                 System.out.println(notas[j] + "<->" + au.ConversionNotas(notas[j]+" "));
+                }
+                if (!sen) {
+                    break;
+                }
+            }
+        }
+        return sen;
+    }
+
+    /// Escribir la nota musical a producir
+    private void getMelodia(JTextArea txtNota) {
+        melodia = "";
+        String[] notas;
+        String texto = txtNota.getText().replace("\\n", "");
+        System.out.println("******************************************");
+        //C D E F G A B C C C
+        String[] p = texto.split(":|;");
+        for (int i = 0; i < p.length; i++) {
+            if (i % 2 != 0 && !p[i - 1].equals(" coro") && !p[i - 1].equals("\ncoro")) {
+                //las notas
+                System.out.println(i + " NOTAS-> " + p[i]);
+                notas = p[i].split(" ");
+                for (int j = 1; j < notas.length; j++) {
+                    melodia += au.ConversionNotas(notas[j] + " ") + " ";
+                }
+                //melodia = au.ConversionWords(p[i] + ":");
+            } else if (i % 2 == 0) {
+                //los instrumentos y CoroM
+                melodia += au.ConversionWords(p[i] + ":").equals("coro") ? coro + "" : au.ConversionWords(p[i] + ":") + " ";
+                System.out.println(i + " Tools -> " + p[i]);
+            }
+        }
+        System.out.println("--------------------->MELODIA------\n" + melodia);
     }
 
 }
