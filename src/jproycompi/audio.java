@@ -46,7 +46,7 @@ public class audio {
     public String ConversionWords(String dato) {
         String valorR = "-";
         //armonica - guitar elect - guitarra - piano - violin - flauta
-        String patron = ("(armonica:)|(guitarra electrica:)|(guitarra:)|(piano:)|(violin:)|(flauta:)|(coro:)");
+        String patron = ("(armonica:)|(guitarra_electrica:)|(guitarra:)|(piano:)|(violin:)|(flauta:)|(coro:)");
         String[] notas = {"I[Harmonica]", "I[Electric_Jazz_Guitar]", "I[Guitar]", "I[Piano]", "I[Violin]", "I[Flute]", "coro"};
         //Pattern pattern = new Pattern("A5q B5q C5q A5q B5q C5q");
         //Pattern pattern = new Pattern("C D E F G A B C C C");
